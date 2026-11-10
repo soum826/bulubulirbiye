@@ -113,15 +113,17 @@
     .sparkle:nth-child(5n+1) { color:#f2c7b7; font-size:clamp(18px,4vw,28px); text-shadow:0 1px 3px #fff,0 0 10px #edb9a7; }
     @keyframes sparkle-float { 0% { opacity:0; transform:translate(-50%,-50%) scale(.2) rotate(0deg); } 10% { opacity:1; } 66% { opacity:.95; } 100% { opacity:0; transform:translate(calc(-50% + var(--sparkle-x)),calc(-50% + var(--sparkle-y))) scale(1.25) rotate(120deg); } }
     .scratch-instruction { margin:19px 0; }
+    
+    /* Updated map container style so it doesn't crop */
     .venue-panel { position:relative; max-width:830px; margin:38px auto 0; padding:48px 28px; background:white; border:1px solid var(--gold); border-radius:25px; box-shadow:0 20px 48px #a676211a; }
     .venue-meta { margin:24px 0 26px; padding-top:0; border-top:0; text-align:left; }
     .venue-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:8px 0 28px; }
     .venue-actions .action { min-width:185px; padding-inline:18px; font-size:11px; }
     .venue-secondary { background:#fff; color:#805918; }
-    .venue-map { width:100%; height:260px; max-width:100%; overflow:hidden; display:grid; place-items:center; border:1px solid #d8b875; border-radius:18px; background:radial-gradient(circle at 50% 35%,#fffdf7 0%,#f7ead7 68%,#ead4ad 100%); box-shadow:0 10px 28px #a6762122; } .venue-map iframe { width:100%; height:260px; max-width:100%; display:block; border:0; }
     .google-map-link { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; padding:13px 22px; border:1px solid var(--gold); border-radius:100px; background:#fffdf8; color:#805918; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; box-shadow:0 8px 20px #a6762122; transition:transform .2s,box-shadow .2s; }
     .google-map-link:hover { transform:translateY(-2px); box-shadow:0 11px 26px #a6762140; }
     .google-map-link svg { width:17px; height:17px; }
+    
     .countdown-section { position:relative; overflow:hidden; background:linear-gradient(145deg,#5d1d2b 0%,#762638 52%,#4d1826 100%); color:#fffaf0; }
     .countdown-section { position:relative; overflow:hidden; background:linear-gradient(145deg,#5d1d2b 0%,#762638 52%,#4d1826 100%); color:#fffaf0; }
     .countdown-section:before { content:"✦  ·  ❧  ·  ✦  ·  ❧  ·  ✦"; position:absolute; inset:28px 18px auto; color:#d5ab54; opacity:.45; letter-spacing:.65em; font-size:16px; text-align:center; }
@@ -198,7 +200,6 @@
      <div class="gold-rule" aria-hidden="true"></div>
      <p data-template-id="hero-date" class="canva-text" style="color: rgb(128, 89, 24); font-weight: 500; font-style: normal; font-size: 11px; letter-spacing: 0.18rem;">23RD NOVEMBER 2026</p>
      
-     <!-- First image: wedding_couple.png -->
      <img data-template-id="hero-illustration" class="canva-image hero-illustration" loading="lazy" src="./wedding_couple.png" alt="Bride and groom animated wedding illustration">
      
      <p data-template-id="scroll-cue" class="canva-text eyebrow scroll-cue" style="color: rgb(166, 118, 33); font-weight: 700; font-style: normal; font-size: 11px;">Scroll to Explore ↓</p>
@@ -225,7 +226,6 @@
         <div class="photo-inner">
          <span class="photo-placeholder" aria-hidden="true">✧</span> 
          
-         <!-- Groom image: groom_image.png -->
          <img data-template-id="groom-photo" id="groom-photo" class="canva-image groom-photo-canvas" loading="lazy" src="./groom_image.png" alt="Groom Sayantan portrait">
          
          <canvas id="groom-preview" class="photo-canvas" width="360" height="360" role="img" aria-label="Selected groom photo"></canvas>
@@ -243,7 +243,6 @@
         <div class="photo-inner">
          <span class="photo-placeholder" aria-hidden="true">✧</span> 
          
-         <!-- Bride image: bride_image.png -->
          <img data-template-id="bride-photo" class="canva-image photo-canvas bride-photo-canvas" loading="lazy" src="./bride_image.png" alt="Bride Deetiya portrait">
          
          <canvas id="bride-preview" class="photo-canvas" width="360" height="360" role="img" aria-label="Selected bride photo"></canvas>
@@ -266,7 +265,6 @@
     <p data-template-id="functions-intro" class="canva-text functions-intro" style="color: rgb(118, 85, 75); font-weight: 400; font-style: normal; font-size: 14px;">A celebration of love, music, colours and blessings.</p>
     <article data-template-id="reception-card" class="canva-card functions-card" style="background: rgb(255, 255, 255);">
      
-     <!-- Second image for reception function card: reception_couple.png -->
      <div class="functions-art"><img data-template-id="functions-image" class="canva-image functions-image" loading="lazy" src="./reception_couple.png" alt="Animated reception couple illustration">
      </div>
 
@@ -362,10 +360,8 @@
     </div>
 
     <!-- Separate Map Card Added Below the Venue Panel -->
-    <div class="canva-panel venue-panel" style="background: rgb(255, 255, 255); margin-top: 25px; padding: 20px;">
-     <div class="venue-map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.4449650997917!2d88.39066957529786!3d22.48748257955197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0271124a303449%3A0x3c0b69708ea8676c!2sUllas%20Banquet%20Hall!5e0!3m2!1sen!2sin!4v1794338505209!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-     </div>
+    <div class="canva-panel venue-panel" style="background: rgb(255, 255, 255); padding: 15px; margin-top: 25px;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.4449650997917!2d88.39066957529786!3d22.48748257955197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0271124a303449%3A0x3c0b69708ea8676c!2sUllas%20Banquet%20Hall!5e0!3m2!1sen!2sin!4v1794338505209!5m2!1sen!2sin" width="100%" height="400" style="border:0; border-radius: 15px; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
 
    </div>
