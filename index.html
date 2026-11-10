@@ -40,7 +40,7 @@
     .arch:after { content:"♡"; position:absolute; top:18px; color:#eab0ad; font-size:18px; }
     .hero-names { margin:34px 0 0; display:flex; flex-direction:column; align-items:center; gap:19px; font-size:clamp(40px,7vw,70px); line-height:1; text-shadow:0 2px 2px white,0 7px 23px #d3aa604d; }
     .hero-amp { display:block; color:var(--gold); font-family:'Playfair Display',serif; font-style:italic; font-size:.52em; line-height:1; text-shadow:0 2px 2px white,0 7px 23px #d3aa604d; }
-    .hero-illustration { display:block; width:min(100%,520px); height:350px; margin:10px auto 2px; object-fit:contain; filter:drop-shadow(0 8px 14px #a676211f) saturate(.9); }
+    .hero-illustration { display:block; width:min(100%,520px); height:auto; max-height:380px; margin:10px auto 2px; object-fit:contain; filter:drop-shadow(0 8px 14px #a676211f) saturate(.9); }
     .scroll-cue { margin-top:18px; }
     .section { width:100%; padding:clamp(48px,7vw,78px) 20px; text-align:center; }
     section[data-template-id="venue-section"] { padding-bottom:0; }
@@ -114,12 +114,16 @@
     @keyframes sparkle-float { 0% { opacity:0; transform:translate(-50%,-50%) scale(.2) rotate(0deg); } 10% { opacity:1; } 66% { opacity:.95; } 100% { opacity:0; transform:translate(calc(-50% + var(--sparkle-x)),calc(-50% + var(--sparkle-y))) scale(1.25) rotate(120deg); } }
     .scratch-instruction { margin:19px 0; }
     
-    /* Updated map container style so it doesn't crop */
     .venue-panel { position:relative; max-width:830px; margin:38px auto 0; padding:48px 28px; background:white; border:1px solid var(--gold); border-radius:25px; box-shadow:0 20px 48px #a676211a; }
     .venue-meta { margin:24px 0 26px; padding-top:0; border-top:0; text-align:left; }
     .venue-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:8px 0 28px; }
     .venue-actions .action { min-width:185px; padding-inline:18px; font-size:11px; }
     .venue-secondary { background:#fff; color:#805918; }
+    
+    /* Map Card Styling */
+    .map-card { position:relative; max-width:830px; margin: 25px auto clamp(48px,7vw,78px); padding: 15px; background:white; border:1px solid var(--gold); border-radius:25px; box-shadow:0 20px 48px #a676211a; }
+    .map-card iframe { width: 100%; height: 400px; border: 0; border-radius: 12px; display: block; }
+    
     .google-map-link { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; padding:13px 22px; border:1px solid var(--gold); border-radius:100px; background:#fffdf8; color:#805918; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; box-shadow:0 8px 20px #a6762122; transition:transform .2s,box-shadow .2s; }
     .google-map-link:hover { transform:translateY(-2px); box-shadow:0 11px 26px #a6762140; }
     .google-map-link svg { width:17px; height:17px; }
@@ -178,6 +182,7 @@
       .opening-date { font-size:10px; }
       .opening-card .action { width:82px; height:82px; min-height:82px; margin-top:12px; padding-top:31px; font-size:7px; }
       .opening-card .action:before { top:16px; font-size:17px; }
+      .map-card iframe { height: 280px; }
     }
     @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*:before,*:after { transition-duration:.01ms!important; animation-duration:.01ms!important; } }
   </style>
@@ -344,6 +349,7 @@
     </div>
     <h2 id="venue-title" data-template-id="venue-title" class="canva-text section-title" style="color: rgb(166, 118, 33); font-weight: 500; font-style: normal; font-size: 27px;">The Venue</h2>
     <div class="gold-rule" aria-hidden="true"></div>
+    
     <div data-template-id="venue-panel" class="canva-panel venue-panel" style="background: rgb(255, 255, 255);">
      <p data-template-id="venue-map-label" class="canva-text eyebrow" style="color: rgb(128, 89, 24); font-weight: 700; font-style: normal; font-size: 11px;">Find Us</p>
      <h3 data-template-id="venue-heading" class="canva-text venue-name" style="color: rgb(69, 59, 43); font-weight: 400; font-style: normal; font-size: 28px;">Ullas Banquet Hall</h3>
@@ -359,9 +365,9 @@
      </div>
     </div>
 
-    <!-- Separate Map Card Added Below the Venue Panel -->
-    <div class="canva-panel venue-panel" style="background: rgb(255, 255, 255); padding: 15px; margin-top: 25px;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.4449650997917!2d88.39066957529786!3d22.48748257955197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0271124a303449%3A0x3c0b69708ea8676c!2sUllas%20Banquet%20Hall!5e0!3m2!1sen!2sin!4v1794338505209!5m2!1sen!2sin" width="100%" height="400" style="border:0; border-radius: 15px; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    <!-- Map Card -->
+    <div class="map-card">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.4449650997917!2d88.39066957529786!3d22.48748257955197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0271124a303449%3A0x3c0b69708ea8676c!2sUllas%20Banquet%20Hall!5e0!3m2!1sen!2sin!4v1794338505209!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
     </div>
 
    </div>
@@ -378,7 +384,7 @@
       ♧ ✿ ♧
      </div>
      <p data-template-id="contact-heading" class="canva-text eyebrow" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 11px;">Contact number –</p>
-     <p data-template-id="contact-numbers" class="canva-text contacts" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 18px;">8420881570 / 9433038969 / 9674004430</p><button id="music-button" data-template-id="music-button" class="canva-button action music-control mt-5" type="button" aria-pressed="false" aria-label="Play background music" style="background: rgb(166, 118, 33); color: rgb(255, 255, 255);"><span data-template-id="music-play-label" class="canva-text music-idle" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 12px;">▶ Play Music</span><span data-template-id="music-pause-label" class="canva-text music-playing" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 12px;">Ⅱ Pause Music</span></button>
+     <p data-template-id="contact-numbers" class="canva-text contacts" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 18px;">8482020925 / 7278512310 / 9330675094</p><button id="music-button" data-template-id="music-button" class="canva-button action music-control mt-5" type="button" aria-pressed="false" aria-label="Play background music" style="background: rgb(166, 118, 33); color: rgb(255, 255, 255);"><span data-template-id="music-play-label" class="canva-text music-idle" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 12px;">▶ Play Music</span><span data-template-id="music-pause-label" class="canva-text music-playing" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 12px;">Ⅱ Pause Music</span></button>
      <p id="audio-error" class="music-status" role="status" hidden="">Music is unavailable in this browser.</p>
     </div>
    </div>
